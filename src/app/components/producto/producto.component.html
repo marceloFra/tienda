@@ -1,0 +1,113 @@
+
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="cuadro-form pr-5 pl-5 pt-4 pb-3  bg-white">
+         <div class="texto-azul">Crear un Producto</div>
+        <form class="example-form" [formGroup]="registerForm" novalidate (submit)="onSubmit()">
+
+         <div class="form-group">
+          <mat-form-field class="super-full-width ">
+            <mat-label>Nombre</mat-label>
+                   <input matInput  formControlName="name" maxlength="50" >
+                   <mat-error  *ngIf="f.name.invalid && f.name.hasError('required')">El nombre es obligatorio</mat-error>
+
+           </mat-form-field>
+        </div>
+          <div class="form-group">
+            <mat-form-field class="super-full-width ">
+              <mat-label>Precio</mat-label>
+                <input class="input-text" formControlName="precio" matInput type="text" maxlength="5">
+                <mat-error class="messsage-error">
+                    <mat-error class="messsage-error" *ngIf="f.precio.invalid && f.precio.hasError('required')">El precio es obligatorio</mat-error>
+                    <mat-error class="messsage-error" *ngIf="f.precio.invalid  && f.precio.hasError('pattern')">No tiene el formato correcto</mat-error>
+
+                </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="super-full-width ">
+                <input class="input-text" formControlName="unidadMedida" matInput type="text" maxlength="10" placeholder="unidad de Medida"   >
+                <mat-error class="messsage-error">
+                    <mat-error class="messsage-error" *ngIf="f.unidadMedida.invalid && f.unidadMedida.hasError('required')">La unidad Medida es obligatorio</mat-error>
+
+                </mat-error>
+            </mat-form-field>
+          </div>
+          <button  class="btn btn-success w-100"  type="submit">
+            Guardar
+      </button>
+
+        </form>
+      </div>
+      </div>
+      <div class="col-md-6">
+
+        <div *ngFor="let item of products ">
+         <div class="alert alert-success" role="alert" >
+             {{item.name}} {{item.precio}} {{item.unidadMedida}}
+
+          <div class="float-right"  (click)="eliminar(item)">
+            <i class="fas fa-trash"></i>
+           </div>
+           <div class="float-right mx-5" data-toggle="modal" data-target="#exampleModal" (click)="editar(item)">
+            <i class="fas fa-pencil-alt"></i>
+           </div>
+        </div>
+        </div>
+      </div>
+    </div>
+   </div>
+
+
+   <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title texto-azul" id="exampleModalLabel">Editar: {{nombre}}  </h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  [formGroup]="editForm" (ngSubmit)="OnSubmitEdit()" #form="ngForm">
+          <div class="form-group">
+            <mat-form-field class="super-full-width ">
+              <mat-label>Nombre</mat-label>
+                     <input matInput  formControlName="name_" maxlength="50" >
+                     <mat-error  *ngIf="e.name_.invalid && e.name_.hasError('required')">El nombre es obligatorio</mat-error>
+
+             </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="super-full-width ">
+              <mat-label>Precio</mat-label>
+                <input class="input-text" formControlName="precio_" matInput type="text" maxlength="5">
+                <mat-error class="messsage-error">
+                    <mat-error class="messsage-error" *ngIf="e.precio_.invalid && e.precio_.hasError('required')">El precio es obligatorio</mat-error>
+                    <mat-error class="messsage-error" *ngIf="e.precio_.invalid  && e.precio_.hasError('pattern')">No tiene el formato correcto</mat-error>
+
+                </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="super-full-width ">
+                <input class="input-text" formControlName="unidad_Medida" matInput type="text" maxlength="10" placeholder="unidad de Medida"   >
+                <mat-error class="messsage-error">
+                    <mat-error class="messsage-error" *ngIf="e.unidad_Medida.invalid && e.unidad_Medida.hasError('required')">La unidad Medida es obligatorio</mat-error>
+
+                </mat-error>
+            </mat-form-field>
+          </div>
+
+          <button class="btn btn-secondary mt-3 w-100" type="submit">Editar</button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
