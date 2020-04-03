@@ -41,8 +41,6 @@ export class ProductoService {
   }
 
   editProduct(prod){
-    console.log('producto que llega al serveicio ' )
-    console.table(prod)
     this.itemDoc = this.afs.doc<Product>(`producto/${prod.id}`);
     this.itemDoc.update(prod);
   }

@@ -1,0 +1,27 @@
+.super-full-width {
+  width: 100%;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.cuadro-form {
+   width: 400px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+.w-100 {
+  width: 100%;
+}
+
+.texto-azul {
+   weight:500;
+  font-size: 20px;
+  color: #0032a0;
+}

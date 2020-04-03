@@ -3,6 +3,7 @@ import { Product } from 'src/app/interfaces/product';
 import { ProductoService } from 'src/app/services/producto.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+declare var $: any;
 
 @Component({
   selector: 'app-producto',
@@ -14,6 +15,7 @@ export class ProductoComponent implements OnInit {
   registerForm: FormGroup;
   idProduct: any;
   nombre: any;
+
 
   products : Product[];
   product: Product = { name: '', precio: 0, unidadMedida: ''};
@@ -89,7 +91,7 @@ export class ProductoComponent implements OnInit {
       precio_ : item.precio,
       unidad_Medida : item.unidadMedida,
     });
-  }
+   }
 
   OnSubmitEdit(){
     if (this.editForm.invalid) {
@@ -99,6 +101,7 @@ export class ProductoComponent implements OnInit {
                                name: this.editForm.value.name_ ,
                                precio: this.editForm.value.precio_,
                                unidadMedida: this.editForm.value.unidad_Medida });
+    $("#exampleModal").modal("toggle");
   }
 
 }

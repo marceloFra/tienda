@@ -18,12 +18,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatInputModule} from '@angular/material/input';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ClienteComponent } from './components/cliente/cliente.component';
+import { DeudasComponent } from './components/deudas/deudas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ProductoComponent,
+    ClienteComponent,
+    DeudasComponent,
 
   ],
   imports: [
